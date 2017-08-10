@@ -18,5 +18,13 @@ public class CategoryServiceImpl extends BaseServiceImpl<Category> implements Ca
 				.setMaxResults(size)
 				.list();
 	}
+
+	@Override
+	public Long getCount(String type) {
+		String hql = "select count(c) from Category c where c.type like :type";
+		return (Long)getSession().createQuery(hql)
+				.setString("type", "%"+type+"%")
+				.uniqueResult();//返回一条记录，总记录数
+	}
 	
 }

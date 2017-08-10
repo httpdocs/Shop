@@ -25,15 +25,43 @@ import cn.it.shop.service.CategoryService;
 @Controller("baseAction")
 @Scope("prototype")
 public class BaseAction<T> extends ActionSupport implements RequestAware,SessionAware,ApplicationAware,ModelDriven<T>{
+	//page和rows和分页有关，因为实体基本都会用到这两个变量，所以直接放到BaseAction中来。
+	//分别生成getter setter,因为pageMap是action传给前台的，所以只需要getter即可。
+	protected Integer page;
+	protected Integer rows;
+	protected Map<String, Object> pageMap = null;//让不同的action自己去实现
+	
+	
+	public Integer getPage() {
+		return page;
+	}
 
+	public void setPage(Integer page) {
+		this.page = page;
+	}
+
+	public Integer getRows() {
+		return rows;
+	}
+
+	public void setRows(Integer rows) {
+		this.rows = rows;
+	}
+
+	public Map<String, Object> getPageMap() {
+		return pageMap;
+	}
+
+
+	//域对象
 	protected T model;
 	protected Map<String, Object> request;
 	protected Map<String, Object> session;
 	protected Map<String, Object> application;
 
+	//service对象
 	@Autowired
-	protected AccountService accountService;
-	
+	protected AccountService accountService;	
 	@Autowired
 	protected CategoryService categoryService;
 	
@@ -71,4 +99,8 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
         }     
         return model;  
 	}
+	
+	
+	
+	
 }
