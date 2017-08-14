@@ -1,5 +1,6 @@
 package cn.it.shop.action;
 
+import java.io.InputStream;
 import java.lang.reflect.ParameterizedType;
 import java.util.Map;
 
@@ -65,6 +66,23 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
 	@Autowired
 	protected CategoryService categoryService;
 	
+	protected String ids;
+	protected InputStream inputStream;
+	
+	
+	public String getIds() {
+		return ids;
+	}
+	
+	public void setIds(String ids) {
+		this.ids = ids;
+	}
+	
+	//只要前台取到就行，后台给前台只要get
+	public InputStream getInputStream() {
+		return inputStream;
+	}
+
 	public void setAccountService(AccountService accountService) {
 		this.accountService = accountService;
 	}

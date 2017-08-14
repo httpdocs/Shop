@@ -3,31 +3,39 @@
 "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
 "http://struts.apache.org/dtds/struts-2.1.dtd">
 
-	<struts>
-	<constant name="struts.i18n.encoding" value="utf-8"/>
-	
+<struts>
+	<constant name="struts.i18n.encoding" value="utf-8" />
+
 	<!-- 继承json-default，因为json-default内部继承了struts-default -->
-	
-		<package name="shop" extends="json-default">
-		
-			<!-- 全局result，这个result对这个packge下的所有action都有用。 -->
-			<global-results>
-				<result name="aindex">/WEB-INF/main/aindex.jsp</result>
-			</global-results>
-			
-			<action name="category_*" class="categoryAction" method="{1}">
-				<result name="jsonMap" type="json">
-					<param name="root">pageMap</param>
-					<param name="excludeProperties">
-						rows\[\d+\]\.account\.pass,
-						rows\[\d+\]\.account\.categories,
-					</param>
-				</result>							
-			</action>
-			
-			<!-- 请求转发action，每一个*匹配一个目录。两层目录。 -->
-			<action name="send_*_*" class="sendAction">
-				<result name="send">/WEB-INF/{1}/{2}.jsp</result>
-			</action>
-		</package>
-	</struts>
+
+	<package name="shop" extends="json-default">
+
+		<!-- 全局result，这个result对这个packge下的所有action都有用。 -->
+		<global-results>
+			<result name="aindex">/WEB-INF/main/aindex.jsp</result>
+		</global-results>
+
+		<action name="category_*" class="categoryAction" method="{1}">
+			<result name="jsonMap" type="json">
+				<param name="root">pageMap</param>
+				<param name="excludeProperties">
+					rows\[\d+\]\.account\.pass,
+					rows\[\d+\]\.account\.categories,
+				</param>
+			</result>
+			<result name="stream" type="stream">
+
+					<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+		<action name="account_*" class="accountAction" method="{1}">
+			<result name="index">/index.jsp</result>
+		</action>
+
+		<!-- 请求转发action，每一个*匹配一个目录。两层目录。 -->
+		<action name="send_*_*" class="sendAction">
+			<result name="send">/WEB-INF/{1}/{2}.jsp</result>
+		</action>
+	</package>
+</struts>
