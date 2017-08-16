@@ -1,5 +1,8 @@
 package cn.it.shop.model;
 
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,14 +10,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import org.springframework.stereotype.Component;
 
 /**
  * Category entity. @author MyEclipse Persistence Tools
  */
 @Entity
-@Component
+@Table(name = "category", catalog = "shop")
+
 public class Category implements java.io.Serializable {
 
 	// Fields
@@ -23,6 +27,7 @@ public class Category implements java.io.Serializable {
 	private Account account;
 	private String type;
 	private boolean hot;
+	//private Set<Product> products = new HashSet<Product>(0);
 
 	// Constructors
 
@@ -31,10 +36,11 @@ public class Category implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Category(Account account, String type, boolean hot) {
+	public Category(Account account, String type, boolean hot, Set<Product> products) {
 		this.account = account;
 		this.type = type;
 		this.hot = hot;
+		//this.products = products;
 	}
 
 	// Property accessors
@@ -52,7 +58,7 @@ public class Category implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-
+	@JoinColumn(name="aid")
 	public Account getAccount() {
 		return this.account;
 	}
@@ -80,5 +86,15 @@ public class Category implements java.io.Serializable {
 	public void setHot(boolean hot) {
 		this.hot = hot;
 	}
+
+	//@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "category")
+
+	//public Set<Product> getProducts() {
+		//return this.products;
+	//}
+
+	//public void setProducts(Set<Product> products) {
+		//this.products = products;
+	//}
 
 }

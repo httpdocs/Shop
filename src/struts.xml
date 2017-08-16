@@ -24,13 +24,17 @@
 				</param>
 			</result>
 			<result name="stream" type="stream">
-
 					<param name="inputName">inputStream</param>
 			</result>
 		</action>
 
 		<action name="account_*" class="accountAction" method="{1}">
-			<result name="index">/index.jsp</result>
+			<result name="jsonList" type="json">
+				<param name="root">jsonList</param>
+				<param name="excludeProperties">
+					jsonList\[\d+\]\.pass,\[\d+\]\.name
+				</param>
+			</result>
 		</action>
 
 		<!-- 请求转发action，每一个*匹配一个目录。两层目录。 -->

@@ -26,13 +26,41 @@
 				iconCls : 'icon-add',
 				text : '添加类别',
 				handler : function() {
-					alert('---添加类别---');
+					parent.$("#win").window({ //因为<div>放在了aindex.jsp中，所以这里创建窗口要先调用parent  
+						title : "添加类别",
+						width : 350,
+						height : 150,
+						content : '<iframe src="send_category_save.action" frameborder="0" width="100%" height="100%"/>'
+					});
 				}
 			}, '-', {
 				iconCls : 'icon-edit',
 				text : '更新类别',
 				handler : function() {
-					alert('---更新类别---');
+						var rows = $("#dg").datagrid('getSelections');
+						if(rows.length==0){
+							$.message.show({
+								title:'错误提示',
+								msg:'至少要选择一条记录',
+								timeout:2000,
+								showType:'slide',
+							});
+						}else if(rows.length!=1){
+							$.message.show({
+								title:'错误提示',
+								msg:'每次只能更新一条记录',
+								timeout:2000,
+								showType:'slide',
+							});
+						}else{
+							parent.$('#win').window({
+								title:'添加类别',
+								width:350,
+								height:250,
+								content:'<iframe src="send_category_update.action" frameborder="0" width="100%" height="100%"/>'
+							});
+						}
+
 				}
 			}, '-', {
 				iconCls : 'icon-remove',

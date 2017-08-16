@@ -18,6 +18,11 @@
 
 		<mapping class="cn.it.shop.model.Account" />
 		<mapping class="cn.it.shop.model.Category" />
+		<mapping class="cn.it.shop.model.Forder" />
+		<mapping class="cn.it.shop.model.Product" />
+		<mapping class="cn.it.shop.model.Sorder" />
+		<mapping class="cn.it.shop.model.Status" />
+		<mapping class="cn.it.shop.model.User" />
 
 	</session-factory>
 

@@ -2,6 +2,7 @@ package cn.it.shop.action;
 
 import java.io.InputStream;
 import java.lang.reflect.ParameterizedType;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.ApplicationAware;
@@ -31,6 +32,35 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
 	protected Integer page;
 	protected Integer rows;
 	protected Map<String, Object> pageMap = null;//让不同的action自己去实现
+
+	//域对象
+	protected T model;
+	protected Map<String, Object> request;
+	protected Map<String, Object> session;
+	protected Map<String, Object> application;
+
+	//service对象
+	@Autowired
+	protected AccountService accountService;	
+	@Autowired
+	protected CategoryService categoryService;
+	
+	protected List<T> jsonList = null;
+	
+	protected String ids;
+	protected InputStream inputStream;
+	
+	public List<T> getJsonList() {
+		return jsonList;
+	}
+	
+	public String getIds() {
+		return ids;
+	}
+	
+	public void setIds(String ids) {
+		this.ids = ids;
+	}
 	
 	
 	public Integer getPage() {
@@ -51,31 +81,6 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
 
 	public Map<String, Object> getPageMap() {
 		return pageMap;
-	}
-
-
-	//域对象
-	protected T model;
-	protected Map<String, Object> request;
-	protected Map<String, Object> session;
-	protected Map<String, Object> application;
-
-	//service对象
-	@Autowired
-	protected AccountService accountService;	
-	@Autowired
-	protected CategoryService categoryService;
-	
-	protected String ids;
-	protected InputStream inputStream;
-	
-	
-	public String getIds() {
-		return ids;
-	}
-	
-	public void setIds(String ids) {
-		this.ids = ids;
 	}
 	
 	//只要前台取到就行，后台给前台只要get

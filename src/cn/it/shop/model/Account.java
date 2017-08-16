@@ -11,13 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.springframework.stereotype.Component;
-
 /**
  * Account entity. @author MyEclipse Persistence Tools
  */
 @Entity
-@Component
+@Table(name = "account", catalog = "shop")
+
 public class Account implements java.io.Serializable {
 
 	// Fields
@@ -26,7 +25,7 @@ public class Account implements java.io.Serializable {
 	private String login;
 	private String name;
 	private String pass;
-	private Set<Category> categories = new HashSet<Category>(0);
+	//private Set<Category> categories = new HashSet<Category>(0);
 
 	// Constructors
 
@@ -39,7 +38,7 @@ public class Account implements java.io.Serializable {
 		this.login = login;
 		this.name = name;
 		this.pass = pass;
-		this.categories = categories;
+		//this.categories = categories;
 	}
 
 	// Property accessors
@@ -86,14 +85,14 @@ public class Account implements java.io.Serializable {
 		this.pass = pass;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "account")
-
-	public Set<Category> getCategories() {
-		return this.categories;
-	}
-
-	public void setCategories(Set<Category> categories) {
-		this.categories = categories;
-	}
+//	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "account")
+//
+//	public Set<Category> getCategories() {
+//		return this.categories;
+//	}
+//
+//	public void setCategories(Set<Category> categories) {
+//		this.categories = categories;
+//	}
 
 }
