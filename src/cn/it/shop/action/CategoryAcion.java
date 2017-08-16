@@ -1,20 +1,12 @@
 package cn.it.shop.action;
 import java.io.ByteArrayInputStream;
-import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
-import javax.enterprise.inject.New;
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-
 import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-
 import cn.it.shop.model.Category;
 import cn.it.shop.utils.ReqUtil;
 

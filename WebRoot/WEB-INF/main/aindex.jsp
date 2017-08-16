@@ -41,10 +41,9 @@
 			if ($('#tt').tabs('exists', text)) {
 				$('#tt').tabs('select', text);
 			} else {
-				var content = '<iframe scrolling="auto" frameborder="0"  src="send_category_query.action" style="width:100%;height:100%;"></iframe>';
 				$('#tt').tabs('add', {
 					title : text,
-					content : content,
+					content : '<iframe title='+text+'  src='+href+' frameborder="0" width="100%" height="100%" />',
 					closable : true
 				});
 			}
@@ -66,7 +65,7 @@
 				style="overflow:auto;padding:10px;">
 				<ul>
 					<li><a href="#" title="send_category_query.action">类别管理</a>
-					<li><a href="#">商品管理</a>
+					<li><a href="#" title="send_product_query.action">商品管理</a>
 				</ul>
 			</div>
 			<div title="其他操作" data-options="iconCls:'icon-reload'"

@@ -17,6 +17,7 @@ import com.opensymphony.xwork2.ModelDriven;
 
 import cn.it.shop.service.AccountService;
 import cn.it.shop.service.CategoryService;
+import cn.it.shop.service.ProductService;
 
 /**
  * 实现action的抽取，把request,session,application以及模型，以及业务类的抽取。
@@ -44,10 +45,14 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
 	protected AccountService accountService;	
 	@Autowired
 	protected CategoryService categoryService;
+	@Autowired
+	protected ProductService productService;
 	
 	protected List<T> jsonList = null;
 	
 	protected String ids;
+	
+	//用来传string给前台
 	protected InputStream inputStream;
 	
 	public List<T> getJsonList() {
@@ -94,6 +99,10 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
 	
 	public void setCategoryService(CategoryService categoryService) {
 		this.categoryService = categoryService;
+	}
+	
+	public void setProductService(ProductService productService) {
+		this.productService = productService;
 	}
 	
 	@Override
