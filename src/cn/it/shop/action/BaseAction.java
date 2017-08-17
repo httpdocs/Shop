@@ -15,9 +15,11 @@ import org.springframework.stereotype.Controller;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
+import cn.it.shop.model.FileImage;
 import cn.it.shop.service.AccountService;
 import cn.it.shop.service.CategoryService;
 import cn.it.shop.service.ProductService;
+import cn.it.shop.utils.FileUpload;
 
 /**
  * 实现action的抽取，把request,session,application以及模型，以及业务类的抽取。
@@ -54,6 +56,25 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
 	
 	//用来传string给前台
 	protected InputStream inputStream;
+	
+	
+	//上传类
+	protected FileImage fileImage;
+	
+	@Autowired
+	protected FileUpload fileUpload;
+	
+	public void setFileUpload(FileUpload fileUpload) {
+		this.fileUpload = fileUpload;
+	}
+	
+	public FileImage getFileImage() {
+		return fileImage;
+	}
+	
+	public void setFileImage(FileImage fileImage) {
+		this.fileImage = fileImage;
+	}
 	
 	public List<T> getJsonList() {
 		return jsonList;

@@ -54,7 +54,7 @@
 							});
 						}else{
 							parent.$('#win').window({
-								title:'添加类别',
+								title:'更新类别',
 								width:350,
 								height:250,
 								content:'<iframe src="send_category_update.action" frameborder="0" width="100%" height="100%"/>'
@@ -172,7 +172,6 @@
 		$('#ss').searchbox({
 			searcher : function(value, name) {
 				//查询操作
-				alert(value + "," + name);
 				$('#dg').datagrid('load', {
 					type : value
 				});

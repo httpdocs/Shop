@@ -49,5 +49,10 @@ public class CategoryAcion extends BaseAction<Category>{
 		System.err.println(model);
 		categoryService.update(model);
 	}
+	
+	public String query(){
+		jsonList = categoryService.query();
+		return "jsonList";
+	}
 
 }

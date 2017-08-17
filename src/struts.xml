@@ -5,6 +5,7 @@
 
 <struts>
 	<constant name="struts.i18n.encoding" value="utf-8" />
+	<constant name="struts.multipart.saveDir" value="/tmp"/>
 	<constant name="struts.devMode" value="true" />	
 	<!-- 继承json-default，因为json-default内部继承了struts-default -->
 
@@ -26,6 +27,12 @@
 			<result name="stream" type="stream">
 				<param name="inputName">inputStream</param>
 			</result>
+			<result name="jsonList" type="json">
+				<param name="root">jsonList</param>
+				<param name="excludeProperties">
+					jsonList\[\d+\]\.account;
+				</param>
+			</result>
 		</action>
 
 		<action name="account_*" class="accountAction" method="{1}">
@@ -45,9 +52,10 @@
 		<action name="product_*" class="productAction" method="{1}">
 			<result name="jsonMap" type="json">
 				<param name="root">pageMap</param>
-				<param name="excludeProperties">
-					
-				</param>
+				<param name="excludeProperties"></param>
+			</result>
+			<result name="stream" type="stream">
+				<param name="inputName">inputStream</param>
 			</result>
 		</action>
 	</package>
