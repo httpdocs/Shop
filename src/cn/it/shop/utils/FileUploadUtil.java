@@ -15,7 +15,7 @@ import cn.it.shop.model.FileImage;
 @Component("fileUpload")
 public class FileUploadUtil implements FileUpload{
 
-	@Value("#{prop.filePath}")
+	@Value("#{prop.basePath+prop.filePath}")
 	private String filePath;
 	
 	private String getFileExt(String fileName) {
@@ -26,6 +26,7 @@ public class FileUploadUtil implements FileUpload{
 		System.err.println(filePath);
 		this.filePath = filePath;
 	}
+	
 	
 	/**
 	 * 生成一个通用唯一标识码，作为文件名。

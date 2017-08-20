@@ -2,7 +2,10 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>shop</display-name>
   <welcome-file-list>
-    <welcome-file>/WEB-INF/main/aindex.jsp</welcome-file>
+ 	<!-- 这个是后台的   <welcome-file>/WEB-INF/main/aindex.jsp</welcome-file> -->
+  	
+    <!-- 这个是前台的 -->
+    <welcome-file>/index.jsp</welcome-file>
   </welcome-file-list>
   
   <!-- SpringMVC 的 IOC 容器是 Spring IOC 容器的子容器
@@ -18,6 +21,11 @@ Spring MVC WEB 层容器可作为 “业务层” Spring容器的子容器：即
   	<param-name>contextConfigLocation</param-name>
   	<param-value>classpath:beans.xml</param-value>
   </context-param>
+  
+  <!-- 配置自定义的监听器，初始化首页的信息 -->
+  <listener>
+  	<listener-class>cn.it.shop.listener.InitDataListener</listener-class>
+  </listener>
   
   <filter>
     <filter-name>struts2</filter-name>
