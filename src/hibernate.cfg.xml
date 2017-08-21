@@ -13,8 +13,9 @@
 			org.hibernate.dialect.MySQLDialect
 		</property>
 		<property name="show_sql">true</property>
-		<!-- <mapping resource="cn/it/shop/model/Category.hbm.xml" /> 
-		<mapping resource="cn/it/shop/model/Account.hbm.xml" /> -->
+
+		<!-- 配置二级缓存 -->
+		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
 
 		<mapping class="cn.it.shop.model.Account" />
 		<mapping class="cn.it.shop.model.Category" />
@@ -24,6 +25,10 @@
 		<mapping class="cn.it.shop.model.Status" />
 		<mapping class="cn.it.shop.model.User" />
 
+		
+		<!-- 配置需要开启二级缓存的类 ,默认都是由session缓存支持的-->
+		<class-cache usage="read-only" class="cn.it.shop.model.Product"/>
+		
 	</session-factory>
 
 </hibernate-configuration>
