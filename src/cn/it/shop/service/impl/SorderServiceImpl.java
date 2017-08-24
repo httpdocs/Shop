@@ -16,7 +16,7 @@ public class SorderServiceImpl extends BaseServiceImpl<Sorder> implements Sorder
 		boolean isHave = false;
 		Sorder sorder = productToSorder(product);
 		for(Sorder old : forder.getSorders()){
-			if(old.getProduct().getId().equals(sorder.getId())){
+			if(old.getProduct().getId().equals(sorder.getProduct().getId())){
 				old.setNumber(old.getNumber()+sorder.getNumber());
 				isHave = true;
 				break;
