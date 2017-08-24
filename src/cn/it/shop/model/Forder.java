@@ -1,7 +1,9 @@
 package cn.it.shop.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -34,7 +36,7 @@ public class Forder implements java.io.Serializable {
 	private double total;
 	private String post;
 	private String address;
-	private Set<Sorder> sorders = new HashSet<Sorder>(0);
+	private List<Sorder> sorders = new ArrayList<Sorder>(0);
 
 	// Constructors
 
@@ -43,13 +45,13 @@ public class Forder implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Forder(Date date) {
-		this.date = date;
+	public Forder(List<Sorder> sorders) {
+		this.sorders = sorders;
 	}
 
 	/** full constructor */
 	public Forder(Status status, User user, String name, String phone, String remark, Date date, double total,
-			String post, String address, Set<Sorder> sorders) {
+			String post, String address, List<Sorder> sorders) {
 		this.status = status;
 		this.user = user;
 		this.name = name;
@@ -170,11 +172,11 @@ public class Forder implements java.io.Serializable {
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "forder")
 
-	public Set<Sorder> getSorders() {
+	public List<Sorder> getSorders() {
 		return this.sorders;
 	}
 
-	public void setSorders(Set<Sorder> sorders) {
+	public void setSorders(List<Sorder> sorders) {
 		this.sorders = sorders;
 	}
 
