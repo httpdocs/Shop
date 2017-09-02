@@ -31,6 +31,10 @@ public class Status implements java.io.Serializable {
 	public Status() {
 	}
 
+	public Status(String status){
+		this.status = status;
+	}
+	
 	/** full constructor */
 	public Status(String status, Set<Forder> forders) {
 		this.status = status;

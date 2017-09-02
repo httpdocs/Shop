@@ -23,6 +23,7 @@ public class SorderServiceImpl extends BaseServiceImpl<Sorder> implements Sorder
 			}
 		}
 		if(!isHave){
+			sorder.setForder(forder);
 			forder.getSorders().add(sorder);
 		}
 		return forder;
