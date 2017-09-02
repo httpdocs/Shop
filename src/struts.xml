@@ -62,5 +62,12 @@
 		<action name="sorder_*" class="sorderAction" method="{1}">
 			<result name="showCart">/user/showCart.jsp</result>
 		</action>
+		
+		<action name="user_*" class="userAction" method="{1}">
+			<result name="login" type="redirect">/ulogin.jsp</result>
+			<result name="goURL" type="redirect">
+				${#session.goURL} <!-- 从值栈中取出session中的数据 -->
+			</result>
+		</action>
 	</package>
 </struts>
