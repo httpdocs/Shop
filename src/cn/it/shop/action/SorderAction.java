@@ -2,9 +2,12 @@ package cn.it.shop.action;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+
+import com.opensymphony.xwork2.ActionContext;
 
 import cn.it.shop.model.Forder;
 import cn.it.shop.model.Product;
@@ -30,5 +33,6 @@ public class SorderAction extends BaseAction<Sorder>{
 		return "showCart";
 		
 	}
+	
 	
 }

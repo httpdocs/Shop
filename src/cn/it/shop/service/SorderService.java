@@ -1,5 +1,7 @@
 package cn.it.shop.service;
 
+import java.util.List;
+
 import cn.it.shop.model.Forder;
 import cn.it.shop.model.Product;
 import cn.it.shop.model.Sorder;
@@ -11,5 +13,6 @@ public interface SorderService extends BaseService<Sorder>{
 	
 	//商品转换为购物项
 	public Sorder productToSorder(Product product);
+	
 	
 }

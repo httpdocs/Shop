@@ -61,21 +61,12 @@
 		<div id="menu" class="easyui-accordion"
 			data-options:"fit:true"
 			style="width:300px;height:200px;">
-			<div title="基本操作" data-options="iconCls:'icon-save',selected:true"
-				style="overflow:auto;padding:10px;">
-				<ul>
-					<li><a href="#" title="send_category_query.action">类别管理</a>
-					<li><a href="#" title="send_product_query.action">商品管理</a>
-				</ul>
-			</div>
-			<div title="其他操作" data-options="iconCls:'icon-reload'"
-				style="padding:10px;">
-				<ul>
-					<li><a href="#">类别管理</a>
-					<li><a href="#">商品管理</a>
-				</ul>
-			</div>
-			<div title="Title3">content3</div>
+				<div title="基本操作">   
+        			<ul>
+						<li><a href="#" title="send_category_query.action">类别管理</a>
+						<li><a href="#" title="send_product_query.action">商品管理</a>
+					</ul>
+    			</div>   
 		</div>
 	</div>
 	<div data-options="region:'center',title:'center title'"

@@ -1,5 +1,7 @@
 package cn.it.shop.service.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import cn.it.shop.model.Forder;
@@ -38,6 +40,8 @@ public class SorderServiceImpl extends BaseServiceImpl<Sorder> implements Sorder
 		sorder.setProduct(product);
 		return sorder;
 	}
+
+
 
 
 }

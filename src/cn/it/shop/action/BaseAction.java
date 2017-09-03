@@ -19,6 +19,7 @@ import cn.it.shop.model.FileImage;
 import cn.it.shop.service.AccountService;
 import cn.it.shop.service.CategoryService;
 import cn.it.shop.service.ForderService;
+import cn.it.shop.service.PayService;
 import cn.it.shop.service.ProductService;
 import cn.it.shop.service.SorderService;
 import cn.it.shop.utils.FileUpload;
@@ -55,6 +56,8 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
 	protected SorderService sorderService;
 	@Autowired
 	protected ForderService forderService;
+	@Autowired 
+	protected PayService payService;
 	
 	protected List<T> jsonList = null;
 	

@@ -1,6 +1,7 @@
 package cn.it.shop.utils;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.UUID;
 
@@ -18,6 +19,17 @@ public class FileUploadUtil implements FileUpload{
 	@Value("#{prop.basePath+prop.filePath}")
 	private String filePath;
 	
+	@Value("#{prop.basePath+prop.bankImagePath}")
+	private String bankImagePath;
+	
+	public String getBankImagePath() {
+		return bankImagePath;
+	}
+	
+	public void setBankImagePath(String bankImagePath) {
+		this.bankImagePath = bankImagePath;
+	}
+	
 	private String getFileExt(String fileName) {
 		return FilenameUtils.getExtension(fileName);
 	}
@@ -27,7 +39,6 @@ public class FileUploadUtil implements FileUpload{
 		this.filePath = filePath;
 	}
 	
-	
 	/**
 	 * 生成一个通用唯一标识码，作为文件名。
 	 * @param fileName
@@ -36,6 +47,20 @@ public class FileUploadUtil implements FileUpload{
 	private String newFileName(String fileName){
 		String ext = getFileExt(fileName);
 		return UUID.randomUUID().toString()+"."+ext;
+	}
+
+	//获得bankImage列表
+	public String[] getBankImage() {
+		String[] list = new	File(getBankImagePath()).list(new FilenameFilter() {
+			@Override
+			public boolean accept(File dir, String name) {
+				System.err.println("dir:" + dir + ",name:" + name);             
+                //通过后缀名来实现文件的过滤效果
+                //返回真就放到list中，返回假就过滤掉
+                return name.endsWith(".gif");
+			}
+		});
+		return list;
 	}
 	
 	@Override

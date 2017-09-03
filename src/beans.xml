@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:aop="http://www.springframework.org/schema/aop" 
-	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans  
            http://www.springframework.org/schema/beans/spring-beans-2.5.xsd  
            http://www.springframework.org/schema/context  
@@ -55,24 +53,27 @@
 	</aop:config>
 
 	<context:component-scan base-package="cn.it.shop.*"></context:component-scan>
-	
-	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
 				<value>classpath:conn.properties</value>
 			</list>
 		</property>
 	</bean>
-	
+
 	<!-- spring 管理属性文件,这是配置在代码中使用注解的方式注入属性 -->
-	<bean id="prop" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+	<bean id="prop"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
 		<property name="locations">
 			<list>
 				<value>classpath:public.properties</value>
+				<value>classpath:pay.properties</value>
 			</list>
 		</property>
 	</bean>
-	
+
 </beans>  
 
 
